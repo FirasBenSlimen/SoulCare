@@ -1,0 +1,62 @@
+<!-- exercise-details.component.html -->
+
+<div class="container">
+    <div class="row">
+      <!-- Image/Video column -->
+      <div class="col-md-4">
+        <!-- Check if URL is for an image -->
+  
+        <ng-container *ngIf="isImageUrl(getExerciseMediaUrl(exercise)); else videoTemplate">
+          <br> 
+          <img class="card-img-top" [src]="getExerciseMediaUrl(exercise)" alt="Exercise Image"
+            style="max-width: 100%; height: auto;">
+        </ng-container>
+        <!-- Else, assume it's a video -->
+        <ng-template #videoTemplate>
+          <br><br>
+          <br><br>
+          <br>
+          <video class="card-img-top" controls autoplay style="max-width: 100%; height: auto;">
+            <source [src]="getExerciseMediaUrl(exercise)" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </ng-template>
+  
+  
+      </div>
+      <!-- Details column -->
+      <div class="col-md-8">
+        <div class="card mb-3" style="background-color: #f0f0f0;">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #ee5007;">{{ exercise.title }}</h5>
+            <p class="card-text">{{ exercise.description }}</p>
+          </div>
+        </div>
+  
+        <div class="card mb-3" style="background-color: #f0f0f0;">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #ee5007;">Exercise Details</h5>
+            <ul class="list-group">
+              <li class="list-group-item" style="background-color: #ffffff;">Difficulty Level: {{ exercise.difficultyLevel
+                }}</li>
+              <li class="list-group-item" style="background-color: #ffffff;">Stress Reduction: {{
+                exercise.stressLevelReduction }}</li>
+              <li class="list-group-item" style="background-color: #ffffff;">Duration: {{ exercise.duration }} minutes
+              </li>
+  
+   
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-3" style="background-color: #f0f0f0;">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #ee5007;">Categorie Deatils :</h5>
+            <ul class="list-group">
+              <li class="list-group-item" style="background-color: #ffffff;">title: {{ exercise.categorie.title }}</li>
+              <li class="list-group-item" style="background-color: #ffffff;">benefits: {{ exercise.categorie.benefits }}</li> 
+  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>

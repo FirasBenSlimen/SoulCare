@@ -1,0 +1,43 @@
+<div class="col-md-8 offset-md-3">
+    <h3> Create Event </h3>
+    <form (ngSubmit) = "onSubmit()">
+      <div class="form-group">
+        <label> Event Description</label>
+        <input type="text" class="form-control" id = "description"
+               [(ngModel)] = "event.description" name = "description">
+      </div>
+      <div class="form-group">
+        <label> Event Date</label>
+        <input type="date" class="form-control" id = "date"
+               [(ngModel)] = "event.date" name = "date">
+      </div>
+      <div class="form-group">
+        <label> Number of Tickets</label>
+        <input type="number" class="form-control" id = "number_of_tickets"
+               [(ngModel)] = "event.number_of_tickets" name = "number_of_tickets">
+      </div>
+      <div class="form-group">
+        <label> Additional Notes</label>
+        <textarea class="form-control" id = "additional_notes"
+                  [(ngModel)] = "event.additional_notes" name = "additional_notes"></textarea>
+      </div>
+      <div class="form-group">
+        <label> Place</label>
+        <input type="text" class="form-control" id = "place"
+               [(ngModel)] = "event.place" name = "place">
+      </div>
+      <div class="form-group">
+        <label> Status</label>
+        <select class="form-control" id = "status"
+                [(ngModel)] = "event.statuss" name = "status">
+          <option value="Confirmed">Confirmed</option>
+          <option value="On_Hold">On Hold</option>
+          <option value="Canceled">Canceled</option>
+          <option value="In_progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Event</button>
+    </form>
+    </div>
+    

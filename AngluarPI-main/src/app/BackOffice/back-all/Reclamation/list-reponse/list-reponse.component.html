@@ -1,0 +1,51 @@
+
+
+<div class="">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 mb-50">
+         <h2>Responses List :</h2>
+                          <div class="col-md-6 col-12">
+          <div class="d-flex justify-content-between align-items-center m-1">
+            <label class="d-flex align-items-center"
+              >                <input type="search" placeholder="Search" class="form-control ml-25" [(ngModel)]="searchKeyword"(input)="searchReclamations()" />
+            </label>
+          </div>
+        </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+                
+          <tr>
+                  <!--<th>Reclamation</th>-->
+                  <th >Content</th>
+              <th >Status</th>
+              <th >Date </th>
+             
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reponse of reponses | paginate: { itemsPerPage: 2, currentPage: p }" class="table-default">
+                <!--<td>{{ reponse.reclamationId }}</td>-->
+                <td>{{ reponse.contenu }}</td>
+                <td class="vert">Processed</td>
+                <td>{{ reponse.dateReponse }}</td>
+              </tr>
+              
+        
+        </tbody>
+      </table>
+      <pagination-controls class="my-4" (pageChange)="p = $event"></pagination-controls>
+
+     
+
+    </div>
+</div>
+
+
+
+ 

@@ -1,0 +1,54 @@
+.center_about_m {
+    background-image: url("./cate.jpg");
+    background-size: cover; /* This ensures the image covers the entire container */
+    background-position: center; /* This centers the image within the container */
+  }
+
+  /* Style général */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Style de la section héros */
+.hero-section {
+  position: relative;
+  background-image: url('./cate.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 100px 0; /* Réduire la hauteur à 50px */
+}
+
+/* Style de la section des catégories */
+.categories-section {
+  padding: 50px 0;
+}
+
+.categories-section header {
+  margin-bottom: 30px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px rgba(74, 64, 64, 0.2);
+}
+
+.custom-btn {
+  background-color: #c46818;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+  background-color: #c1956e;
+}

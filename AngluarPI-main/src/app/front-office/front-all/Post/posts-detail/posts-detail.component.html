@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 tm-post-col">
+            <div class="tm-post-full" *ngIf="post$ | async as post">
+                <!-- Post content -->
+                <div class="mb-4">
+                    <p class="tm-mb-40">{{ post.datePosted }}</p>
+                    <img [src]="'data:image/jpeg;base64,' + post.image" alt="Post Image" class="tm-mb-40">
+                    <p>{{ post?.content }}</p>
+                </div>
+
+                <!-- Comments -->
+                <div>
+                    <h2 class="tm-color-primary tm-post-title">Comments</h2>
+                    <hr class="tm-hr-primary tm-mb-45">
+                    <!-- Loop through comments -->
+                    <div *ngFor="let comment of comments$ | async" class="tm-comment tm-mb-45">
+                        <div class="tm-comment-content">
+                            <!-- Comment content -->
+                            <p>{{ comment.content }}</p>
+                            <!-- Comment date -->
+                            <div class="d-flex justify-content-between">
+                                <span class="tm-color-primary">{{ comment.date  }}</span>
+                                <!-- Edit and delete buttons -->
+                                <button type="button" class="btn btn-link" (click)="editComment(comment)">Edit</button>
+                                <button type="button" class="btn btn-link" (click)="deleteComment(comment)">Delete</button>
+                                <!-- Reply button -->
+                                <button class="btn btn-link" (click)="showReplyForm(comment.id)">Reply</button>
+                            </div>
+
+
+                            <div *ngIf="comment.replies && comment.replies.length > 0" class="ml-4">
+                                <!-- Loop through child comments -->
+                                <div *ngFor="let reply of comment.replies" class="tm-sub-comment mb-3">
+                                    <div class="tm-comment-content">
+                                        <!-- Child comment content -->
+                                        <p>{{ reply.content }}</p>
+                                        <!-- Child comment date -->
+                                        <div class="d-flex justify-content-between">
+                                            <span class="tm-color-primary">{{ reply.date  }}</span>
+                                            <!-- Edit and delete buttons for child comment -->
+                                            <button type="button" class="btn btn-link" (click)="editComment(reply)">Edit</button>
+                                            <button type="button" class="btn btn-link" (click)="deleteComment(reply)">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Reply form -->
+                        <div *ngIf="selectedCommentId === comment.id">
+                            <form class="mb-3 tm-comment-form">
+                                <div class="form-group">
+                                    <!-- Read-only text area for displaying reply content -->
+                                    <textarea [(ngModel)]="replyContent" name="replyContent" class="form-control"></textarea>
+                                </div>
+                                <!-- Submit button for reply -->
+                                <div class="text-right">
+                                    <button type="button" class="btn btn-primary" (click)="addReply(comment.id, post.id, replyContent)">Submit Reply</button>
+                                </div>
+                            </form>
+                        
+                        </div>
+                        <!-- Show child comments -->
+                        
+                    </div>
+                </div>
+                <!-- Comment Form -->
+                <form class="mb-5 tm-comment-form">
+                    <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
+                    <!-- Text area for adding a comment -->
+                    <div class="mb-4">
+                        <textarea [(ngModel)]="commentContent" name="commentContent" rows="6" placeholder="Your comment" class="form-control"></textarea>
+                    </div>
+                    <!-- Submit button for comment -->
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary" (click)="addComment()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

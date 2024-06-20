@@ -1,0 +1,38 @@
+
+<h2>Respond to an Issue:</h2>
+
+      <div class="">
+       <!-- Multi Columns Form -->
+       <form class="row g-3" (ngSubmit)="submitReponse()" [formGroup]="reponseForm">
+  
+        <h5>Issue Title : {{ selectedReclamationName }}</h5>
+
+
+        <div class="col-md-6">
+          <label for="reponseContenu" class="form-label">Content :</label>
+          <textarea class="form-control" rows="5" formControlName="reponseContenu"></textarea>
+          <div *ngIf="validateField('reponseContenu')" class="error-message">
+            {{ getErrorMessage('reponseContenu') }}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="inputCategorie" class="form-label">Status :</label>
+          <select class="form-control" formControlName="statuss">
+            <option value="TRAITE">Processed</option>
+            
+          </select>
+          <div *ngIf="validateField('statuss')" class="error-message">
+              {{ getErrorMessage('statuss') }}
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+      </form><!-- End Multi Columns Form -->
+
+
+      </div>
+
+
+    

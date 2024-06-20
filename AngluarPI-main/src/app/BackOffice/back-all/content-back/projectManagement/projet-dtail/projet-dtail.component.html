@@ -1,0 +1,18 @@
+<div *ngIf="project" class="card">
+  <div class="card-header">
+    <img class="card-img-top" [src]="project.image || project.defaultImage" alt="{{ project.title }}">
+
+    <h2>{{ project.title }}</h2>
+  </div>
+  <div class="card-body">
+    <p>{{ project.description }}</p>
+    <p>État du projet: {{ project.etatProject }}</p>
+    <!-- Display the file name if available -->
+    <p class="card-text"><strong>File:</strong> {{ project.file ? project.file.name : 'No file attached' }}</p>
+    <!-- Display the comment input field -->
+  </div>
+  <div class="card-footer">
+    <button mat-raised-button class="btn btn-success" (click)="navigateToUpdateProject(project.idProject)">Modifier</button>
+    <button mat-raised-button class="btn btn-danger" (click)="deleteProject(project.idProject)">Supprimer</button>
+  </div>
+</div>

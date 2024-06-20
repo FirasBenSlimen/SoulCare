@@ -1,0 +1,19 @@
+
+<div *ngIf="product" class="card">
+    <div class="card-header">
+      <h2>{{ product.title }}</h2>
+      <!-- Button to navigate to update page -->
+    
+    </div>
+    <div class="card-body">
+      <p>{{ product.description }}</p>
+      <p>Price: {{ product.price | currency }}</p>
+      <div *ngFor="let property of getProductProperties()">
+        <p>{{ property.name }}: {{ product[property.key] }}</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="onUpdateProduct(product.productId)">Update Product</button>
+    <button class="btn btn-danger" (click)="onDeleteProduct(product.productId)">Delete Product</button>
+
+  </div>
+  

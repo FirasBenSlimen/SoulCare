@@ -1,0 +1,192 @@
+.events {
+    padding: 50px 0;
+  }
+  
+  .section-heading h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .section-heading form {
+    margin-bottom: 20px;
+  }
+  
+  .event-cards .event-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  
+  .event-cards .event-card .image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .event-cards .event-card .content {
+    padding: 20px;
+  }
+  
+  .event-cards .event-card .content h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .event-cards .event-card .content p {
+    font-size: 16px;
+  }
+  /* Custom CSS for welcoming section */
+.welcome-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .welcome-section .page-header {
+    position: relative;
+    padding: 100px 0;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .welcome-section .filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .welcome-section .content-center {
+    z-index: 1;
+  }
+  
+  .welcome-section .title-brand {
+    margin-bottom: 50px;
+  }
+  
+  .welcome-section .title-brand h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .welcome-section .presentation-subtitle {
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .welcome-section .moving-clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: repeat-x;
+    animation: cloudMovement 60s linear infinite;
+  }
+  
+  /* Keyframes for cloud movement animation */
+  @keyframes cloudMovement {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }
+  
+  /* Additional styles for Bootstrap elements */
+  .category-absolute {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .welcome-section .title-brand h1 {
+      font-size: 36px;
+    }
+    
+    .welcome-section .presentation-subtitle {
+      font-size: 20px;
+    }
+  }
+  .tickets-run-out {
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .event-list {
+  margin-top: 20px;
+}
+
+.event-item {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.event-attributes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-attributes li {
+  margin-bottom: 10px;
+}
+
+.attribute-label {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.attribute-value {
+  font-size: 16px;
+  color: #666;
+}
+.filter-form {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px;
+}
+
+.btn-filter {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #337ab7;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-filter:hover {
+  background-color: #23527c;
+}

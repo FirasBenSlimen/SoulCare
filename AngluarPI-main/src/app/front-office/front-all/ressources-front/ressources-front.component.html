@@ -1,0 +1,74 @@
+<section class="hero-section" id="section_1">
+  <div class="section-overlay center_about_m"></div>
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="text-center">
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <header>
+    <h2 class="text-center">Resources:</h2>
+  </header>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let ressource of ressources">
+      <div>{{ ressource.date_creation | date:'mediumDate' }}</div>
+
+      <div class=" card text-center">
+        <div *ngIf="isImage(ressource.url)">
+          <img class="thumbnail-img"
+            [src]="'http://localhost:8085/mindCare/ressource/loadurl/' + ressource.idR"
+            [alt]="ressource.titleR"
+            (click)="loadResourceUrl(ressource.idR)"
+            onmouseover="this.style.transform = 'scale(1.1)';"
+            onmouseout="this.style.transform = 'scale(1)';">
+        </div>
+        <div *ngIf="isVideo(ressource.url)">
+          <video controls
+            (click)="loadResourceUrl(ressource.idR)"
+            class="video-container"
+            onmouseover="this.style.transform = 'scale(1.1)';"
+            onmouseout="this.style.transform = 'scale(1)';">
+            <source (click)="loadResourceUrl(ressource.idR)"
+              type="video/mp4"
+              [src]="'http://localhost:8085/mindCare/ressource/loadurl/' + ressource.idR">
+            Votre navigateur ne supporte pas la balise vidéo.
+          </video>
+        </div>
+        <div *ngIf="isPDF(ressource.url)" class="pdf-container media-container">
+          <i class="fas fa-download"></i>
+          <a [href]="'http://localhost:8085/mindCare/ressource/loadurl/' + ressource.idR" target="_blank">Télécharger le PDF</a>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="mb-1 text text-center">Title :</h6>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-1">{{ ressource.titleR }}</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="mb-1 text text-center">Description :</h6>
+          </div>
+          <div class="col-md-8">
+            <div class="mb-1 ">{{ ressource.descriptionR }}</div>
+          </div>
+        </div>
+        
+        <div class="likeContainer">
+          <span>{{ ressource.likes }}</span>
+          <button (click)="likeRessource(ressource.idR)">
+            <i class="fas fa-thumbs-up like-icon"></i>
+          </button>
+          <span>{{ ressource.dislikes }}</span>
+          <button (click)="dislikeRessource(ressource.idR)">
+            <i class="fas fa-thumbs-down dislike-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

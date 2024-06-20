@@ -1,0 +1,5 @@
+.center_about_m {
+    background-color: burlywood;
+    background-size: cover; /* This ensures the image covers the entire container */
+    background-position: center; /* This centers the image within the container */
+  }

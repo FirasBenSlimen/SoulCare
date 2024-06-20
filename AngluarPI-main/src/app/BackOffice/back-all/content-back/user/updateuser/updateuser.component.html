@@ -1,0 +1,68 @@
+
+
+<main id="main" class="main">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Mise à jour d'un utilisateur</h5>
+
+      <!-- Multi Columns Form -->
+      <form class="row g-3" (ngSubmit)="modifierUser()" [formGroup]="BlocForm" >
+
+        <div class="col-md-12">
+          <label for="role" class="form-label">Role :</label>
+          <select class="form-control" formControlName="role"  >
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+          </select>
+          <div *ngIf="validateField('role')" class="error-message">
+            {{ getErrorMessage('role') }}
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="firstname" class="form-label" >firstname :</label>
+          <input type="text" class="form-control" formControlName="firstname">
+          <div *ngIf="validateField('firstname')" class="error-message">
+            {{ getErrorMessage('firstname') }}
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <label for="lastname" class="form-label" >lastname :</label>
+          <input type="text" class="form-control" formControlName="lastname">
+          <div *ngIf="validateField('lastname')" class="error-message">
+            {{ getErrorMessage('lastname') }}
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+          <label style="display: none;" for="password" class="form-label" >password :</label>
+          <input style="display: none;" type="text" class="form-control" formControlName="password">
+          <div *ngIf="validateField('password')" class="error-message">
+            {{ getErrorMessage('password') }}
+          </div>
+        </div>
+        <div class="col-md-12">
+          <label for="email" class="form-label" >email :</label>
+          <input type="text" class="form-control" formControlName="email">
+          <div *ngIf="validateField('email')" class="error-message">
+            {{ getErrorMessage('email') }}
+          </div>
+        </div>
+
+
+
+
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+      </form><!-- End Multi Columns Form -->
+
+    </div>
+  </div>
+</main>

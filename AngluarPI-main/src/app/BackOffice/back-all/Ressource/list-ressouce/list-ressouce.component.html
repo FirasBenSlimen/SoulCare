@@ -1,0 +1,91 @@
+
+
+<div class="">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 mb-50">
+          <h2>Ressources List :</h2>
+
+          <button class="btn btn-primary ml-1" rippleEffect [routerLink]="['../ajoutRessource']">
+            <i data-feather="plus" class="mr-0 mr-sm-1"></i
+            ><span class="d-none d-sm-inline-block" >Add an Ressource</span>
+          </button>
+                          <div class="col-md-6 col-12">
+          <div class="d-flex justify-content-between align-items-center m-1">
+            <label class="d-flex align-items-center"
+              >                <input type="search" placeholder="Search" class="form-control ml-25" [(ngModel)]="searchKeyword" (input)="searchRessources()" />
+            </label>
+          </div>  
+        </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+                
+          <tr>
+              <th>Id Of Ressource</th>
+              <th >Title</th>
+              <th >Description</th>
+              <th >URL</th>
+              <th>Date Of Creation</th>
+              <th >Category</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ressource of ressources | paginate: { itemsPerPage: 5, currentPage: p }" class="table-default">
+            <td>{{ ressource.idR }}</td>
+            <td>{{ ressource.titleR }}</td>
+            <td>{{ ressource.descriptionR }}</td>
+            <td>
+              <div *ngIf="isImage(ressource.url)">
+                <img class="thumbnail-img"  [src]="'http://localhost:8085/mindCare/ressource/loadurl/' + ressource.idR " [attr.alt]="ressource.titleR" (click)="loadResourceUrl(ressource.idR)" onmouseover="this.style.transform = 'scale(1.1)';" onmouseout="this.style.transform = 'scale(1)';"> 
+              </div>
+              <div *ngIf="isVideo(ressource.url)" >
+                <video controls (click)="loadResourceUrl(ressource.idR)" class="video-container">
+                  <source   (click)="loadResourceUrl(ressource.idR)" type="video/mp4"  [src]="'http://localhost:8085/mindCare/ressource/loadurl/' + ressource.idR " onmouseover="this.style.transform = 'scale(1.1)';" onmouseout="this.style.transform = 'scale(1)';">
+                  Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+              </div>
+              <div *ngIf="isPDF(ressource.url)" class="pdf-container media-container">
+                <i class="fas fa-download"></i>
+                <a [href]="'http://localhost:8085/mindCare/ressource/loadurl/' + ressource.idR" target="_blank">Télécharger le PDF</a>
+              </div>
+              
+              
+            </td>
+
+            <td>{{ ressource.date_creation | date:'mediumDate' }}</td>
+            <td>{{ ressource.category?.nameC }}</td>
+            <td>
+              <i data-feather="trash-2" class="btn btn-danger" (click)="ressource.idR && deleteRessource(ressource.idR)">Delete</i>
+              <br>
+              <i data-feather="trash-2" class="btn btn-secondary" (click)="ressource.idR && desaffecterRessource(ressource.idR)">Unassign</i>
+              <br>
+              <i data-feather="edit" class="btn btn-primary" (click)="updateRessource(ressource.idR)">Update</i>
+            </td>
+        </tr>
+        
+        </tbody>
+      </table>
+      <pagination-controls class="my-4" (pageChange)="p = $event"></pagination-controls>
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="chart-container">
+            <h2>Statistics :</h2>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      
+
+    </div>
+</div>
+
+
+
+ 

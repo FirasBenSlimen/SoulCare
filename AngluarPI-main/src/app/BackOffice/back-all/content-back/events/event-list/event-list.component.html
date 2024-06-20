@@ -1,0 +1,31 @@
+<h2>Event List</h2>
+<form>
+  <label for="date">Filter by Date:</label>
+  <input type="date" id="date" [(ngModel)]="date" name="date">>
+  <button type="submit" (click)="filterEventsByDate()">Filter</button>
+</form>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> Event Description</th>
+      <th> Date </th>
+      <th> Place </th>
+      <th> Status </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of filteredEvents">
+      <td> {{ event.description }} </td>
+      <td> {{ event.date | date: 'MM/dd/yyyy' }} </td>
+      <td> {{ event.place }} </td>
+      <td> {{ event.statuss }} </td>
+      <td>
+        <button (click)="updateEvent(event.idEvent)" class="btn btn-info">Update</button>
+        <button (click)="deleteEvent(event.idEvent)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a [routerLink]="['../create-event']">
+  <button class="btn btn-primary">Add Event</button>
+</a>

@@ -1,0 +1,32 @@
+
+.dark-violet-text {
+  color: #7b1fa2;
+  text-align: center;/* Dark violet color */
+}
+
+.violet-form {
+  background-color: #f3e5f5; /* Light violet */
+
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+
+.violet-button {
+  background-color: #5005F2;
+
+  color: white;
+}
+
+.violet-button:hover {
+  background-color: yellow;
+  color: black; /* Darker violet on hover */
+}
+.container {
+  margin-bottom: 200px;
+  width: 500px;
+margin-left: 30%;
+padding: 40px;
+background-color:white;
+border-style: groove;
+border-radius: 30px;}

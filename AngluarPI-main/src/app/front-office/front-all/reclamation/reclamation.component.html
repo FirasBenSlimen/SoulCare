@@ -1,0 +1,59 @@
+<section class="hero-section" id="section_1">
+    <div class="section-overlay center_about_m"></div>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <h1 class="text-black mb-5">Issue</h1>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-9 col-lg-5">
+            <div class="part-contact poklotto-form">
+                <h3 class="title">Report something</h3>
+                <div class="part-form form-container">
+                    <form #reclamationForm="ngForm" (ngSubmit)="persistreclamation(reclamationForm.value)">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <label for="categorie" class="form-label">Category</label>
+                                <select id="categorie" ngModel name="categorie" class="form-select" (change)="onCategoryChange($event)" required>
+                                    <option disabled selected value="">Choose a category</option>
+                                    <option value="Missing_Functionalities">Missing Functionalities</option>
+                                    <option value="Technical_Problems">Technical Problems</option>
+                                    <option value="Security">Security</option>
+                                    <option value="Support_and_Assitance">Assistance and Support</option>
+                                    <option value="Performances">Performance</option>
+                                </select>
+                            </div>
+                                
+                            <div *ngIf="showNameField">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" placeholder="Ex: Saif .." ngModel class="form-control" name="name" required>
+                            </div>
+                                  
+                            <div *ngIf="showDescriptionField">
+                                <label for="descriptionReclamation" class="form-label">Issue Description</label>
+                                <textarea id="descriptionReclamation" placeholder="Ex: Description ..." ngModel class="form-control" name="descriptionReclamation" required></textarea>
+                            </div>
+                            <!-- Ajoutez d'autres champs conditionnellement si nécessaire -->
+                        </div>
+                            
+                        <button class="btn custom-btn d-lg-block d-none" type="submit" aria-label="Soumettre le formulaire de réclamation">Report <i class="fa-solid fa-angle-right"></i></button>
+                    </form>
+                </div>
+
+                <div *ngIf="notification" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ notificationMessage }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                          
+                <div *ngIf="successNotification" class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ successNotificationMessage }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</div>

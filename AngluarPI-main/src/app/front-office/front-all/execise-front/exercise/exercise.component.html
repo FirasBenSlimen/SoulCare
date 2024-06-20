@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row justify-content-center mt-3">
+      <ng-container *ngFor="let exerciseRating of exerciseRatings.slice(0, 3); let i = index">
+        <div class="col-md-6">
+          <!-- Display top 3 exercises -->
+          <div class="card border-dark mb-3" style="border-width: 2px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+            <div class="card-body" style="height: 200px;"> <!-- Set a fixed height for the card body -->
+              <div class="row">
+                <!-- Exercise Information (Left) -->
+                <div class="col-md-4">
+                  <br>
+                  <h5 class="card-title">{{ exerciseRating.exercise.title }}</h5> 
+                  <p class="card-text"><strong>Duration:</strong> {{ exerciseRating.exercise.duration }}</p>
+                  <p class="card-text"><strong>Stress Reduction:</strong> {{ exerciseRating.exercise.stressLevelReduction }}</p>
+                </div>
+                <!-- Video (Middle) -->
+                <div class="col-md-4">
+                  <ng-container *ngIf="isImageUrl(getExerciseMediaUrl(exerciseRating.exercise)); else videoTemplate">
+                    <!-- If it's an image, reduce size -->
+                    <img class="card-img-top" [src]="getExerciseMediaUrl(exerciseRating.exercise)" alt="Exercise Image" style="max-width: 100%; height: auto; object-fit: contain;">
+                  </ng-container>
+                  <!-- Else, assume it's a video -->
+                  <ng-template #videoTemplate>
+                    <video class="card-img-top" controls style="max-width: 100%; height: 100%; object-fit: contain;" (mouseover)="playVideo($event)" (mouseout)="pauseVideo($event)">
+                      <source [src]="getExerciseMediaUrl(exerciseRating.exercise)" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </ng-template>
+                </div>
+                <!-- Ranking and Likes (Middle) -->
+               
+                
+                <div class="col-md-4 text-center">
+                  <br>
+                  <br>
+                  <div class="ranking">
+                    <strong *ngIf="i < 3" style="font-size: 24px; font-weight: bold;">Rank {{ i + 1 }}</strong>
+                  </div>
+                  <div class="likes">
+                    <p class="card-text" style="font-size: 18px;">Likes: {{ exerciseRating.likePercentage.toFixed(2).split('.')[0] }}%</p>
+                  </div>
+                </div>
+              </div>
+     
+            </div>
+          </div>
+        </div>
+        <!-- Add a clearfix after every second column to ensure proper alignment -->
+        <div *ngIf="(i + 1) % 2 === 0" class="clearfix"></div>
+      </ng-container>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <!-- Button to toggle display -->
+      <div class="text-center mt-3">
+        <button class="btn btn-primary" [style.background-color]="'#ee5007'" [style.color]="'#ffffff'" (click)="toggleDisplay(!showTopExercisesOnly)">
+          {{ showTopExercisesOnly ? 'Display All' : 'Show Top 3 Exercises' }}
+        </button>
+      </div>
+   
+  
+  
+   
+  <br>
+  
+  
+  <div *ngIf="showTopExercisesOnly">
+  
+  
+  <div class="container">
+    <div class="row">
+   
+      
+    </div>
+  </div>
+  </div>
+  <div class="container" *ngIf="showTopExercisesOnly==false">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let exercise of exercises">
+        <div class="card mb-3">
+  
+          <ng-container *ngIf="isImageUrl(getExerciseMediaUrl(exercise)); else videoTemplate">
+            <img class="card-img-top" [src]="getExerciseMediaUrl(exercise)" alt="Exercise Image" style="max-width: 100%; height: 300px; object-fit: contain;">
+          </ng-container>
+          <!-- Else, assume it's a video -->
+          <ng-template #videoTemplate>
+            <video class="card-img-top" controls style="max-width: 100%; height: 300px; object-fit: contain;" (mouseover)="playVideo($event)" (mouseout)="pauseVideo($event)">
+              <source [src]="getExerciseMediaUrl(exercise)" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </ng-template>
+          <!-- ... rest of your code ... -->
+  
+          <div class="card-body">
+            <h5 class="card-title">{{ exercise.title }}</h5>
+            <p class="card-text">{{ exercise.description }}</p>
+            <p class="card-text">Difficulty Level: {{ exercise.difficultyLevel }}</p>
+            <p class="card-text">Stress Reduction: {{ exercise.stressLevelReduction }}</p>
+            <!-- Add "View Details" button here -->
+            <button class="btn btn-primary" style="background-color: #ee5007; color: white;" (click)="viewDetails(exercise)">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   
+  

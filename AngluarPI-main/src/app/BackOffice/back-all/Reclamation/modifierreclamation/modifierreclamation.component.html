@@ -1,0 +1,65 @@
+
+
+<main id="main" class="main">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Mise à jour d'une reclamation</h5>
+  
+        <!-- Multi Columns Form -->
+        <form class="row g-3" (ngSubmit)="modifierReclamation()" [formGroup]="BlocForm" >
+
+          <div class="col-md-12">
+            <label for="inputCategorie" class="form-label">Catégorie :</label>
+            <select class="form-control" formControlName="categorie"  >
+              <option value="FONCTIONNALITES_MANQUANTES">Fonctionnalités manquantes</option>
+              <option value="PROBLEMES_TECHNIQUES">Problèmes techniques</option>
+              <option value="SECURITE">Sécurité</option>
+              <option value="ASSISTANCE_ET_SUPPORT">Assistance et support</option>
+              <option value="PERFORMANCES">Performances</option>
+            </select>
+            <div *ngIf="validateField('categorie')" class="error-message">
+                {{ getErrorMessage('categorie') }}
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <label for="inputTitle" class="form-label" >Name :</label>
+            <input type="text" class="form-control" formControlName="name">
+            <div *ngIf="validateField('name')" class="error-message">
+                {{ getErrorMessage('name') }}
+              </div>
+                     </div>
+
+                     <div class="col-md-12">
+                        <label for="inputTitle" class="form-label">Date Soumission :</label>
+                        <input type="date" class="form-control" formControlName="dateSoumission" >
+                        <div *ngIf="validateField('dateSoumission')" class="error-message">
+                            {{ getErrorMessage('dateSoumission') }}
+                        </div>
+                    </div>
+                    
+
+          <div class="col-md-12">
+            <label for="inputDescription" class="form-label">Description:</label>
+            <textarea class="form-control" rows="3" formControlName="descriptionReclamation" ></textarea>
+
+            <div *ngIf="validateField('descriptionReclamation')" class="error-message">
+                {{ getErrorMessage('descriptionReclamation') }}
+              </div>
+                      </div>
+
+                     
+         
+                   
+          
+                  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- End Multi Columns Form -->
+  
+      </div>
+    </div>
+  </main>
+  

@@ -1,0 +1,30 @@
+<section class="hero-section" id="section_1">
+    <div class="section-overlay center_about_m"></div>
+    <div class="container d-flex justify-content-center align-items-center">
+      <div class="text-center">
+      </div>
+    </div>
+  </section>
+  
+  <section class="categories-section" id="section_2">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="row">
+            <header>
+              <h2 class="text-center">Categories Of Resources :</h2>
+            </header>
+            <div class="col-md-4 mb-4" *ngFor="let category of categories">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ category.nameC }}</h5>
+                  <a  class="btn custom-btn " [routerLink]="['/ressources', category.idC]">View Resources</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

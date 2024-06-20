@@ -1,0 +1,76 @@
+
+<main>
+
+
+  <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="index.html">
+          </a>
+          <img src="assets\logo.png" class="image">
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="nav align-items-lg-center ms-auto me-lg-5">
+                  <li class="nav-item">
+                      <a class="nav-link click-scroll" routerLink="/home" style="color: black;">Home</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" routerLink="/posts-front"  style="color: black;">Posts</a>
+                </li>
+
+                  <li class="nav-item">
+                      <a class="nav-link click-scroll" routerLink="/categoriFront" style="color: black;">Resources</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" routerLink="/exercisefront" style="color: black;">Our Exercises</a>
+                </li>
+
+
+                  <li class="nav-item">
+                      <a class="nav-link click-scroll" routerLink="/reclamationfront"  style="color: black;">Report</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link click-scroll" routerLink="/tickets"  style="color: black;">Event</a>
+                  </li>
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a  href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div >
+                      <img src="/assets/BackOffice/assets/img/avatars/1.png" alt style="width: 60px; height: 60px;" class="rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+
+                    <li>
+                      <a class="dropdown-item" routerLink="/profile">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a (click)="logout()" class="dropdown-item" >
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Log Out</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+<!--              <a  class="btn custom-btn d-lg-block d-none">Sign In</a>-->
+          </div>
+      </div>
+  </nav>
+
+
+
+

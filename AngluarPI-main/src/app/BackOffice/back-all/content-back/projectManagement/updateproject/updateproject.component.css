@@ -1,0 +1,33 @@
+.container {
+  margin: 50px auto;
+  width: 50%; /* Adjust the width as needed */
+}
+
+.dark-violet-text {
+/* Dark violet color */
+  text-align: center;
+}
+
+.container {
+  background-color: white; /* Light violet */
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 400px;
+}
+
+.black-text {
+  color: #000; /* Black text color */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #5005f2; /* Violet button color */
+  color: white;
+}
+
+.btn:hover {
+  background-color: #5e35b1; /* Darker violet on hover */
+}

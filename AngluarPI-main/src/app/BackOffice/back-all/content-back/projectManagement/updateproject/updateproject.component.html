@@ -1,0 +1,34 @@
+<div class="container ">
+  <h2 class="dark-violet-text">Modifier Projet</h2>
+  <form #f="ngForm" (ngSubmit)="edit(f)" class="violet-form">
+    <div class="form-group">
+      <label for="title" class="black-text">Titre</label>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="project.title" required>
+    </div>
+    <div class="form-group">
+      <label for="description" class="black-text">Description</label>
+      <textarea class="form-control" id="description" name="description" [(ngModel)]="project.description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="prototype" class="black-text">Prototype</label>
+      <input type="text" class="form-control" id="prototype" name="prototype" [(ngModel)]="project.prototype" required>
+    </div>
+    <div class="form-group">
+      <label for="date_debut" class="black-text">Date de début</label>
+      <input type="date" class="form-control" id="date_debut" name="date_debut" [(ngModel)]="project.dateDebut" required>
+    </div>
+    <div class="form-group">
+      <label for="datefin_prevu" class="black-text">Date de fin prévue</label>
+      <input type="date" class="form-control" id="datefin_prevu" name="datefin_prevu" [(ngModel)]="project.dateFinPrevu" required>
+    </div>
+    <div class="form-group">
+      <label for="etatProject" class="black-text">État du Projet</label>
+      <select class="form-control" id="etatProject" name="etatProject" [(ngModel)]="project.etatProject" required>
+        <option *ngFor="let state of etatValues" [value]="state">{{ state }}</option>
+      </select>
+    </div>
+    <button mat-raised-button type="submit" class="btn btn-danger pull-right">
+      Modifier
+    </button>
+  </form>
+</div>

@@ -1,0 +1,52 @@
+
+
+<h2>Update an Ressource :</h2>
+
+      <div class="">
+        <form class="row g-3" (ngSubmit)="updateRessource()" [formGroup]="BlocForm" >
+
+         
+
+          <div class="col-md-6">
+            <label for="inputTitle" class="form-label">Title :</label>
+            <input type="text" class="form-control" formControlName="titleR">
+            <div *ngIf="validateField('titleR')" class="error-message">
+                {{ getErrorMessage('titleR') }}
+              </div>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="inputTitle" class="form-label">Description :</label>
+                        <input type="text" class="form-control" formControlName="descriptionR">
+                        <div *ngIf="validateField('descriptionR')" class="error-message">
+                            {{ getErrorMessage('descriptionR') }}
+                          </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <label for="inputTitle" class="form-label">URL :</label>
+                                    <input type="text" class="form-control" formControlName="url">
+                                    <div *ngIf="validateField('url')" class="error-message">
+                                        {{ getErrorMessage('url') }}
+                                      </div>
+                                             </div>
+
+                     
+
+       
+
+                     
+         
+                   
+          
+                  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">update</button>
+          </div>
+        </form><!-- End Multi Columns Form -->
+  
+
+      </div>
+
+
+    
+  

@@ -1,0 +1,68 @@
+
+
+<h2>Add an Ressource :</h2>
+
+      <div class="">
+        <form class="row g-3" (ngSubmit)="addRessource(fileInput)" [formGroup]="BlocForm">
+
+         
+
+          <div class="col-md-6">
+            <label for="inputTitle" class="form-label">Title :</label>
+            <input type="text" class="form-control" formControlName="titleR">
+            <div *ngIf="validateField('titleR')" class="error-message">
+                {{ getErrorMessage('titleR') }}
+              </div>
+                     </div>
+
+                     <div class="col-md-6">
+                        <label for="inputTitle" class="form-label">Description :</label>
+                        <input type="text" class="form-control" formControlName="descriptionR">
+                        <div *ngIf="validateField('descriptionR')" class="error-message">
+                            {{ getErrorMessage('descriptionR') }}
+                          </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                  <label for="inputTitle" class="form-label">URL :</label>
+                                  <input type="file" class="form-control" formControlName="url" #fileInput>
+                                  <div *ngIf="validateField('url')" class="error-message">
+                                    {{ getErrorMessage('url') }}
+                                  </div>
+                                </div>
+
+                    <!--<div class="col-md-6">
+                        <label for="inputTitle" class="form-label">Date  :</label>
+                        <input type="date" class="form-control" formControlName="date_creation">
+                        <div *ngIf="validateField('date_creation')" class="error-message">
+                            {{ getErrorMessage('date_creation') }}
+                        </div>
+                    </div>-->
+                    
+
+       
+
+                      <div class="col-md-6">
+                        <label for="inputAssignedTo" class="form-label">Category:</label>
+                        <select class="form-select" formControlName="category">
+                          <option *ngFor="let category of catgories" [value]="category.idC">{{ category.nameC }}</option>
+                        </select>
+                        <div *ngIf="validateField('category')" class="error-message">
+                          {{ getErrorMessage('category') }}
+                        </div>
+                      </div>
+         
+                   
+          
+                  
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form><!-- End Multi Columns Form -->
+  
+
+      </div>
+
+
+    
+  

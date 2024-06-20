@@ -1,0 +1,151 @@
+<div class="container">
+    <div class="card-body">
+        <header>
+            <h2>Exercises List</h2>
+        </header>
+
+        <section>
+            <button class="btn btn-primary ml-1" (click)="toggleAddForm()">
+                <i class="mr-1"></i>Add an Exercise
+            </button>
+
+            <div *ngIf="showAddForm" class="mt-3 card">
+                <div class="card-body">
+                    <h3 *ngIf="newExercise.exerciseId; else addExerciseTitle" class="mb-4">Edit Exercise</h3>
+                    <ng-template #addExerciseTitle>
+                        <h3 class="mb-4">Add New Exercise</h3>
+                    </ng-template>
+                    <form #exerciseForm="ngForm" (ngSubmit)="newExercise.exerciseId ? updateExercise() : addExercise()" >
+                        <div class="form-group row">
+                            <label for="categoryId" class="col-sm-3 col-form-label">Category ID:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="categoryId" [(ngModel)]="newExercise.categorie.categoryId" name="categoryId" required>
+                                    <option *ngFor="let category of categories" [value]="category.categoryId">{{ category.title }}</option>
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label for="exerciseTitle" class="col-sm-3 col-form-label">Exercise Title:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="exerciseTitle" [(ngModel)]="newExercise.title" name="title" required minlength="4">
+                                <div *ngIf="exerciseForm.controls['title'].invalid && (exerciseForm.controls['title'].dirty || exerciseForm.controls['title'].touched)"  class="text-danger mt-1">
+                                    <span *ngIf="exerciseForm.controls['title'].errors?.['required']">Exercise title is required.</span>
+                                    <span *ngIf="exerciseForm.controls['title'].errors?.['minlength']">Exercise title must be at least 4 characters long.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exerciseDescription" class="col-sm-3 col-form-label">Exercise Description:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="exerciseDescription" [(ngModel)]="newExercise.description" name="description" required minlength="30">
+                                <div *ngIf="exerciseForm.controls['description'].invalid && (exerciseForm.controls['description'].dirty || exerciseForm.controls['description'].touched)"  class="text-danger mt-1">
+                                    <span *ngIf="exerciseForm.controls['description'].errors?.['required']">Exercise description is required.</span>
+                                    <span *ngIf="exerciseForm.controls['description'].errors?.['minlength']">Exercise description must be at least 30 characters long.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exerciseDifficultyLevel" class="col-sm-3 col-form-label">Difficulty Level:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="exerciseDifficultyLevel" [(ngModel)]="newExercise.difficultyLevel" name="difficultyLevel" required>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="stressLevelReduction" class="col-sm-3 col-form-label">Stress Level Reduction:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="stressLevelReduction" [(ngModel)]="newExercise.stressLevelReduction" name="stressLevelReduction" required>
+                                    <option value="LEVEL_1">Level 1</option>
+                                    <option value="LEVEL_2">Level 2</option>
+                                    <option value="LEVEL_3">Level 3</option>
+                                    <option value="LEVEL_4">Level 4</option>
+                                    <option value="LEVEL_5">Level 5</option>
+                                    <option value="LEVEL_6">Level 6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exerciseDuration" class="col-sm-3 col-form-label">Duration (in minutes):</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="exerciseDuration" [(ngModel)]="newExercise.duration" name="duration" required min="5" max="180">
+                                <div *ngIf="exerciseForm.controls['duration'].invalid && (exerciseForm.controls['duration'].dirty || exerciseForm.controls['duration'].touched)"  class="text-danger mt-1">
+                                    <span *ngIf="exerciseForm.controls['duration'].errors?.['required']">Exercise duration is required.</span>
+                                    <span *ngIf="exerciseForm.controls['duration'].errors?.['min']">Exercise duration must be at least 5 minutes.</span>
+                                    <span *ngIf="exerciseForm.controls['duration'].errors?.['max']">Exercise duration cannot exceed 180 minutes.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more fields for exercise properties if needed -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="exerciseForm.invalid">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            
+              
+            
+        </section>
+
+        <div class="search-bar col-md-12 col-12 mt-3 text-md-right"> <!-- Added text-md-right class -->
+            <label class="d-flex align-items-center">
+                <!-- Dropdown box for selecting criteria -->
+                <select class="form-control" [(ngModel)]="selectedCriteria" (change)="onCriteriaChange()">
+                    <option value="description">Description</option>
+                    <option value="difficultyLevel">Difficulty Level</option>
+                    <option value="duration">Duration</option>
+                    <option value="exerciseId">Exercise ID</option>
+                    <option value="stressLevelReduction">Stress Level Reduction</option>
+                    <option value="title">Title</option>
+                </select>
+                <!-- Search input -->
+                <input type="search" placeholder="Search" class="form-control ml-1" [(ngModel)]="searchKeyword" (input)="getExercisesByCriteriaAndValue()">
+            </label>
+        </div>
+        
+          
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Exercise ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Difficulty Level</th>
+                    <th scope="col">Duration (minutes)</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Stress Reduction Level</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let exercise of exercises | paginate: { itemsPerPage: 4, currentPage: p }">
+                    <td>{{ exercise.exerciseId }}</td>
+                    <td>{{ exercise.title }}</td>
+                    <td>{{ exercise.description }}</td>
+                    <td>{{ exercise.difficultyLevel }}</td>
+                    <td>{{ exercise.duration }}</td>
+                    <td>{{ exercise.categorie.title }}</td>
+                    <td>{{ exercise.stressLevelReduction }}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-outline-primary" (click)="editExercise(exercise)">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger ml-2" (click)="deleteExercise(exercise.exerciseId)">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls class="my-4" (pageChange)="p = $event"></pagination-controls>
+    </div>
+    
+    
+</div>

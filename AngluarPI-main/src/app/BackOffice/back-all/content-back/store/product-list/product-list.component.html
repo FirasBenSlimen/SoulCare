@@ -1,0 +1,31 @@
+
+<a routerLink="/admin/products">Product List</a>
+
+<h2>Product List</h2>
+<div class="row">
+  <!-- Loop through each product in the products array -->
+  <div class="col-md-4" *ngFor="let product of products">
+    <div class="card mb-4 shadow-sm">
+      <!-- Display the product image -->
+      <img class="card-img-top" [src]="product.image" alt="{{ product.title }}">
+      <div class="card-body">
+        <!-- Display the product title -->
+        <h5 class="card-title">{{ product.title }}</h5>
+        <!-- Display the product description -->
+        <p class="card-text">{{ product.description }}</p>
+        <!-- Display the product price -->
+        <p class="card-text">Price: {{ product.price | currency }}</p>
+        <!-- Optionally, add more product details here -->
+        <!-- Display buttons or links for actions like view details, add to cart, etc. -->
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <a [routerLink]="['/products', product.productId]">View Details</a>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+          </div>
+          <!-- Display the product quantity -->
+          <small class="text-muted">Quantity: {{ product.quantity }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

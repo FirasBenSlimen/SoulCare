@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="card-body">
+    <header>
+      <h2>Categories List</h2>
+    </header>
+
+    <section>
+      <button class="btn btn-primary ml-1" (click)="toggleAddForm()">
+        <i class="mr-1"></i>Add a Category
+      </button>
+
+      <div *ngIf="showAddForm" class="mt-3 card">
+        <div class="card-body">
+          <h3 *ngIf="newCategory.categoryId; else addCategoryTitle" class="mb-4">Edit Category</h3>
+          <ng-template #addCategoryTitle>
+            <h3 class="mb-4">Add New Category</h3>
+          </ng-template>
+          <form #newCategoryForm="ngForm" (ngSubmit)="newCategory.categoryId ? updateCategory() : addCategory()"
+            class="needs-validation" novalidate>
+            <div class="form-group row">
+              <label for="categoryTitle" class="col-sm-3 col-form-label">Category Title:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="categoryTitle" [(ngModel)]="newCategory.title" name="title"
+                  required minlength="4">
+                <div
+                  *ngIf="newCategoryForm.controls['title'].invalid && (newCategoryForm.controls['title'].dirty || newCategoryForm.controls['title'].touched)"
+                  class="text-danger mt-1">
+                  <span *ngIf="newCategoryForm.controls['title'].errors?.['required']">Category title is
+                    required.</span>
+                  <span *ngIf="newCategoryForm.controls['title'].errors?.['minlength']">Category title must be at least
+                    4 characters long.</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="categoryDescription" class="col-sm-3 col-form-label">Category Description:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="categoryDescription" [(ngModel)]="newCategory.description"
+                  name="description" required minlength="30">
+                <div
+                  *ngIf="newCategoryForm.controls['description'].invalid  && (newCategoryForm.controls['description'].dirty || newCategoryForm.controls['description'].touched)"
+                  class="text-danger mt-1">
+                  <span *ngIf="newCategoryForm.controls['description'].errors?.['required']">Category description is
+                    required.</span>
+                  <span *ngIf="newCategoryForm.controls['description'].errors?.['minlength']">Category description must
+                    be at least 30 characters long.</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="categoryBenefits" class="col-sm-3 col-form-label">Category Benefits:</label>
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="categoryBenefits" [(ngModel)]="newCategory.benefits"
+                  name="benefits" required minlength="30">
+                <div
+                  *ngIf="newCategoryForm.controls['benefits'].invalid  && (newCategoryForm.controls['benefits'].dirty || newCategoryForm.controls['benefits'].touched)"
+                  class="text-danger mt-1">
+                  <span *ngIf="newCategoryForm.controls['benefits'].errors?.['required']">Category benefits are
+                    required.</span>
+                  <span *ngIf="newCategoryForm.controls['benefits'].errors?.['minlength']">Category benefits must be at
+                    least 30 characters long.</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="text-center">
+              <br>9
+              <button type="submit" class="btn btn-primary" [disabled]="newCategoryForm.invalid">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+    </section>
+    <div class="search-bar col-md-12 col-12 mt-3 text-md-right"> <!-- Added text-md-right class -->
+
+      <label class="d-flex align-items-center">
+        <!-- Dropdown box for selecting criteria -->
+        <select class="form-control" [(ngModel)]="selectedCriteria" (change)="onCriteriaChange()">
+          <option value="title">Title</option>
+          <option value="description">Description</option>
+          <option value="benefits">Benefits</option>
+          <option value="categoryId">Category ID</option>
+        </select>
+        <!-- Search input -->
+        <input type="search" placeholder="Search" class="form-control ml-1" [(ngModel)]="searchKeyword" (input)="getCategoriesdyn()">
+
+      </label>
+    </div>
+
+
+  </div>
+
+
+  <div class="table-responsive">
+
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+              <tr>
+                  <th scope="col">Category ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Benefits</th>
+                  <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let category of categories | paginate: { itemsPerPage: 4, currentPage: p }">
+                  <td>{{ category.categoryId }}</td>
+                  <td>{{ category.title }}</td>
+                  <td>{{ category.description }}</td>
+                  <td>{{ category.benefits }}</td>
+                  <td class="action-buttons">
+                      <button class="btn btn-sm btn-outline-primary" (click)="editCategory(category)">
+                          <i class="fas fa-edit"></i> Edit
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger ml-2" (click)="deleteCategory(category.categoryId)">
+                          <i class="fas fa-trash-alt"></i> Delete
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <pagination-controls class="my-4" (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+
+  
+</div>

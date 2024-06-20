@@ -1,0 +1,12 @@
+
+<div class="container">
+    <h2>Categories</h2>
+    <ul class="list-group">
+      <li *ngFor="let category of categories" class="list-group-item">
+        {{ category.name }} - {{ category.description }}
+      </li>
+      <li *ngIf="categories.length === 0" class="list-group-item">
+        No categories found.
+      </li>
+    </ul>
+</div>

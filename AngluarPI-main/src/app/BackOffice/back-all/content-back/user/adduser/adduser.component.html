@@ -1,0 +1,66 @@
+
+
+<h2>Ajouter un utilisateur :</h2>
+
+<div class="">
+  <form class="row g-3" (ngSubmit)="addUser()" [formGroup]="BlocForm" >
+
+
+    <div class="col-md-6">
+      <label for="email" class="form-label">Email:</label>
+      <input type="text" class="form-control" formControlName="email">
+      <div *ngIf="validateField('email')" class="error-message">
+        {{ getErrorMessage('email') }}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="firstname" class="form-label">FirstName :</label>
+      <input type="text" class="form-control" formControlName="firstname">
+      <div *ngIf="validateField('firstname')" class="error-message">
+        {{ getErrorMessage('firstname') }}
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="lastname" class="form-label">LastName :</label>
+      <input type="text" class="form-control" formControlName="lastname">
+      <div *ngIf="validateField('lastname')" class="error-message">
+        {{ getErrorMessage('lastname') }}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="password" class="form-label">password :</label>
+      <input type="password" class="form-control" formControlName="password">
+      <div *ngIf="validateField('password')" class="error-message">
+        {{ getErrorMessage('password') }}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="role" class="form-label">Role :</label>
+      <select class="form-control" formControlName="role">
+        <option value="User">User</option>
+        <option value="Admin">Admin</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Student">Student</option>
+      </select>
+      <div *ngIf="validateField('role')" class="error-message">
+        {{ getErrorMessage('role') }}
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Ajouter</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+  </form><!-- End Multi Columns Form -->
+
+
+</div>
+
+
+
